@@ -11,19 +11,18 @@ const router = createRouter({
     routes: [
     	{
     		path: "/",
+            name: 'home',
     		component: MainBody
     	},
     	{
     		path: "/login",
+            name: 'login',
     		component: Login
     	},
         {
             path: '/register',
+            name: 'register',
             component: Register
-        },
-        {
-            path: '/link',
-            component: LinkToQrCode
         },
 	    {
 	    	path: "/:pathMatch(.*)",

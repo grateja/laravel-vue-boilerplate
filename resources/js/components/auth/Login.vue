@@ -27,7 +27,9 @@
 		},
         methods: {
             login() {
-                this.$store.dispatch('auth/login', this.formData)
+                this.$store.dispatch('auth/login', this.formData).then((res, rej) => {
+                    this.$router.push({name:'home'})
+                })
                 // this.$store.dispatch('post', {
                 //     tag: 'login',
                 //     url: 'auth/login',
@@ -38,9 +40,6 @@
                 //     // console.log("plain text token", res.data.token.plainTextToken);
                 //     this.$router.push('/');
                 // })
-            },
-            check() {
-                axios.get('api/auth/logout')
             }
         },
         computed: {

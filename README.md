@@ -4,4 +4,4 @@
 <li>Added vuex</li>
 <li>Added Sanctum</li>
 <li>Added UUID Traits</li>
-<li></li>
+<li>Switch to session login</li>

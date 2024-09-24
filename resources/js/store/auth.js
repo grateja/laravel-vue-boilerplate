@@ -7,8 +7,8 @@ export default {
             context.commit('setLoading', 'logging-in', {root: true});
             context.commit('clearErrors', null, {root: true});
             axios.post('/api/auth/login', data).then((res, rej) => {
-                localStorage.setItem('sanctumToken', res.data.token.plainTextToken);
-                localStorage.setItem('tokenName', res.data.token.accessToken.name);
+                // localStorage.setItem('sanctumToken', res.data.token.plainTextToken);
+                // localStorage.setItem('tokenName', res.data.token.accessToken.name);
                 return res;
             }).catch(err => {
                 context.commit('setErrors', err.response.data.errors, {root: true});
@@ -24,8 +24,8 @@ export default {
                 tokenName: localStorage.tokenName,
                 token: localStorage.sanctumToken
             }).then((res, rej) => {
-                localStorage.removeItem('sanctumToken')
-                localStorage.removeItem('tokenName')
+                // localStorage.removeItem('sanctumToken')
+                // localStorage.removeItem('tokenName')
                 return res;
             }).catch(err => {
                 context.commit('setErrors', err.response.data.errors, {root: true});

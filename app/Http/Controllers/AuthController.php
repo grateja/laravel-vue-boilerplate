@@ -26,6 +26,8 @@ class AuthController extends Controller
         } else if(Hash::check($request->password, $user->password)) {
             $token = $user->createToken('login', ['basic']);
 
+            Auth::login($user);
+
             return response()->json([
                 'token' => $token,
                 'user' => $user,
@@ -45,6 +47,13 @@ class AuthController extends Controller
         $token = auth('sanctum')->user()->tokens()
             ->where('name', $request->tokenName);
         $token->delete();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        Auth::guard('web')->logout();
+
+        return response()->json(['message' => 'Logged out successfully'], 200);
     }
 
     public function check() {
